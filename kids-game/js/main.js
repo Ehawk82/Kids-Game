@@ -76,7 +76,7 @@
 
 	        setTimeout(() => { startBTN.id = "startBTN_full" }, 500);
 	    },
-	    beginningGame: (startBTN) => {
+	    beginningGame: (startBTN) => {//putting away the start button and then removing it, then triggering the loading screen; possibly ansycroniously loading userdata check here?
 	        return () => {
 	            //console.log(startBTN);
 	            startBTN.id = "startBTN";
@@ -87,7 +87,7 @@
 	            }, 500);
 	        }
 	    },
-	    triggerLoadScreen: () => {
+	    triggerLoadScreen: () => {//trigger the load screen at any time, it will stay until you call to remove it
 	        var ldScrn = UI.createEle("div"),
 	            ldGif = UI.createEle("div");
 
@@ -104,11 +104,18 @@
 	            ldScrn.className = "ldScrn_full";
 	            ldGif.className = "ldGif_full";
 
-	            UI.loadUserData();
+	            UI.loadUserData(ldScrn, ldGif);
 	        }, 50);
 	    },
-	    loadUserData: () => {
-	        console.log("loading user status..");
+	    killLoadScreen: (ldScrn, ldGif) => {//kills the loading elements
+	        ldScrn.remove();
+	        ldGif.remove();
+	    },
+        loadUserData: (ldScrn, ldGif) => {//here is where the game checks the user data
+            return () => {
+                console.log("loading user status..");
+                setTimeout(() => { UI.killLoadScreen(ldScrn, ldGif); }, 500);
+            }
 	    }
 	};
 	app.start();
