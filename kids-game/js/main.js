@@ -8,6 +8,10 @@
 	var activation = Windows.ApplicationModel.Activation;
 	var isFirstActivation = true;
 
+	var ViewManagement = Windows.UI.ViewManagement;
+	var ApplicationViewWindowingMode = ViewManagement.ApplicationViewWindowingMode;
+	var ApplicationView = ViewManagement.ApplicationView;
+
 	app.onactivated = function (args) {
 		if (args.detail.kind === activation.ActivationKind.voiceCommand) {
 			// TODO: Handle relevant ActivationKinds. For example, if your app can be started by voice commands,
@@ -39,7 +43,8 @@
 			// TODO: The app was activated and had not been running. Do general startup initialization here.
 			document.addEventListener("visibilitychange", onVisibilityChanged);
 			args.setPromise(WinJS.UI.processAll());
-            UI.startup();
+			ApplicationView.preferredLaunchWindowingMode = ApplicationViewWindowingMode.fullScreen;
+            UI.startup();//starts general program here
 		}
 
 		isFirstActivation = false;

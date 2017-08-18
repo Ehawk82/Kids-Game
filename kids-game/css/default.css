@@ -1,5 +1,10 @@
-﻿body {
-
+﻿body, html {
+   height:100%;
+   width:100%;
+}
+#hub {
+   height:100%;
+   width:100%;
 }
 #startBTN {
     transition:all 1s;
@@ -34,8 +39,8 @@
     position:absolute;
     top:100vh;
     left:0;
-    height:100vh;
-    width:100vw;
+    height:100%;
+    width:100%;
 }
 .ldScrn_full {
     transition:all 500ms;
@@ -46,11 +51,11 @@
     left:0;
     text-align:center;
     line-height:100vh;
-    width:100vw;
+    width:100%;
 }
 .ldGif {
     background-image: url('../images/page-loader.gif');
-    background-size:300px 300px;
+    background-size:310px 310px;
     position:absolute;
     width:30%;
     height:30%;
@@ -62,7 +67,7 @@
 .ldGif_full {
     transition:all 500ms;
     background-image: url('../images/page-loader.gif');
-    background-size:300px 300px;
+    background-size:310px 310px;
     position:absolute;
     width:30%;
     height:30%;
