@@ -1,2 +1,73 @@
 ﻿body {
+
+}
+#startBTN {
+    transition:all 1s;
+    border-radius:5px;
+    position:absolute;
+    top:150%;
+    left:45%;
+    width:10%;
+    background:#ff6a00;
+    border:none;
+    padding:2% 0;
+}
+    #startBTN:active {
+        opacity:.7;
+    }
+#startBTN_full {
+    border-radius:5px;
+    transition:all 500ms;
+    position:absolute;
+    top:40%;
+    left:45%;
+    width:10%;
+    background:#ff6a00;
+    border:none;
+    padding:2% 0;
+}
+    #startBTN_full:active {
+        opacity:.7;
+    }
+.ldScrn {
+    background:black;
+    position:absolute;
+    top:100vh;
+    left:0;
+    height:100vh;
+    width:100vw;
+}
+.ldScrn_full {
+    transition:all 500ms;
+    background:black;
+    position:absolute;
+    color:#fff;
+    top:0;
+    left:0;
+    text-align:center;
+    line-height:100vh;
+    width:100vw;
+}
+.ldGif {
+    background-image: url('../images/page-loader.gif');
+    background-size:300px 300px;
+    position:absolute;
+    width:30%;
+    height:30%;
+    background-position:center;
+    background-repeat:no-repeat;
+    left:35%;
+    top:-35%;
+}
+.ldGif_full {
+    transition:all 500ms;
+    background-image: url('../images/page-loader.gif');
+    background-size:300px 300px;
+    position:absolute;
+    width:30%;
+    height:30%;
+    background-position:center;
+    background-repeat:no-repeat;
+    left:35%;
+    top:35%;
 }

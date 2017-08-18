@@ -39,6 +39,7 @@
 			// TODO: The app was activated and had not been running. Do general startup initialization here.
 			document.addEventListener("visibilitychange", onVisibilityChanged);
 			args.setPromise(WinJS.UI.processAll());
+            UI.startup();
 		}
 
 		isFirstActivation = false;
@@ -55,7 +56,56 @@
 		// You might use the WinJS.Application.sessionState object, which is automatically saved and restored across suspension.
 		// If you need to complete an asynchronous operation before your application is suspended, call args.setPromise().
 	};
+	var UI;
 
+	UI = {
+	    createEle: (x) => { return document.createElement(x); },
+	    startup: () => {
+	        var startBTN = UI.createEle("button");
+	        //console.log("startup");
+	        startBTN.innerHTML = "Start";
+	        startBTN.id = "startBTN";
+	        startBTN.onclick = UI.beginningGame(startBTN);
+
+	        hub.appendChild(startBTN);
+
+	        setTimeout(() => { startBTN.id = "startBTN_full" }, 500);
+	    },
+	    beginningGame: (startBTN) => {
+	        return () => {
+	            //console.log(startBTN);
+	            startBTN.id = "startBTN";
+
+	            setTimeout(() => {
+	                UI.triggerLoadScreen();
+	                startBTN.remove();
+	            }, 500);
+	        }
+	    },
+	    triggerLoadScreen: () => {
+	        var ldScrn = UI.createEle("div"),
+	            ldGif = UI.createEle("div");
+
+	        ldScrn.className = "ldScrn";
+	        ldScrn.innerHTML = "Loading";
+
+	        ldGif.className = "ldGif";
+	        ldGif.innerHTML = "&nbsp;";
+
+	        hub.appendChild(ldScrn);
+	        hub.appendChild(ldGif);
+
+	        setTimeout(() => {
+	            ldScrn.className = "ldScrn_full";
+	            ldGif.className = "ldGif_full";
+
+	            UI.loadUserData();
+	        }, 50);
+	    },
+	    loadUserData: () => {
+	        console.log("loading user status..");
+	    }
+	};
 	app.start();
 
 })();
