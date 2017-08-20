@@ -108,14 +108,20 @@
 	        }, 50);
 	    },
 	    killLoadScreen: (ldScrn, ldGif) => {//kills the loading elements
-	        ldScrn.remove();
-	        ldGif.remove();
+
+	        ldScrn.className = "ldScrn";
+	        ldGif.className = "ldGif";
+
+            setTimeout(() => {
+	           ldScrn.remove();
+	           ldGif.remove();
+            }, 500);
 	    },
         loadUserData: (ldScrn, ldGif) => {//here is where the game checks the user data
-            return () => {
+
                 console.log("loading user status..");
-                setTimeout(() => { UI.killLoadScreen(ldScrn, ldGif); }, 500);
-            }
+                setTimeout(() => { UI.killLoadScreen(ldScrn, ldGif); }, 2000);
+            
 	    }
 	};
 	app.start();
