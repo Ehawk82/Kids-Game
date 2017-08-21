@@ -85,70 +85,83 @@
             console.log(xxx.candy);
             */
         },
-	    createEle: (x) => { return document.createElement(x); },
-	    startup: () => {// loading initialization data here
-	        var startBTN = UI.createEle("button");
-	        //console.log("startup");
-	        startBTN.innerHTML = "Start";
-	        startBTN.id = "startBTN";
-	        startBTN.onclick = UI.beginningGame(startBTN);
+        createEle: (x) => { return document.createElement(x); },
+        startup: () => {// loading initialization data here
+            var startBTN = UI.createEle("button");
+            //console.log("startup");
+            startBTN.innerHTML = "Start";
+            startBTN.id = "startBTN";
+            startBTN.onclick = UI.beginningGame(startBTN);
 
-	        hub.appendChild(startBTN);
-	        UI.initialize();
-	        setTimeout(() => { startBTN.id = "startBTN_full" }, 500);
-	    },
-	    beginningGame: (startBTN) => {//putting away the start button and then removing it, then triggering the loading screen.
-	        return () => {
-	            //console.log(startBTN);
-	            startBTN.id = "startBTN";
+            hub.appendChild(startBTN);
+            UI.initialize();
+            setTimeout(() => { startBTN.id = "startBTN_full" }, 500);
+        },
+        beginningGame: (startBTN) => {//putting away the start button and then removing it, then triggering the loading screen.
+            return () => {
+                //console.log(startBTN);
+                startBTN.id = "startBTN";
 
-	            setTimeout(() => {
-	                UI.triggerLoadScreen();
-	                startBTN.remove();
-	            }, 500);
-	        }
-	    },
-	    triggerLoadScreen: () => {//trigger the load screen at any time, it will stay until you call to remove it
-	        var ldScrn = UI.createEle("div"),
+                setTimeout(() => {
+                    UI.triggerLoadScreen();
+                    startBTN.remove();
+                }, 500);
+            }
+        },
+        triggerLoadScreen: () => {//trigger the load screen at any time, it will stay until you call to remove it
+            var ldScrn = UI.createEle("div"),
 	            ldGif = UI.createEle("div");
 
-	        ldScrn.className = "ldScrn";
-	        ldScrn.innerHTML = "Loading";
+            ldScrn.className = "ldScrn";
+            ldScrn.innerHTML = "Loading";
 
-	        ldGif.className = "ldGif";
-	        ldGif.innerHTML = "&nbsp;";
+            ldGif.className = "ldGif";
+            ldGif.innerHTML = "&nbsp;";
 
-	        hub.appendChild(ldScrn);
-	        hub.appendChild(ldGif);
-
-	        setTimeout(() => {
-	            ldScrn.className = "ldScrn_full";
-	            ldGif.className = "ldGif_full";
-
-	            UI.loadUserData(ldScrn, ldGif);
-	        }, 50);
-	    },
-	    killLoadScreen: (ldScrn, ldGif) => {//kills the loading elements
-
-	        ldScrn.className = "ldScrn";
-	        ldGif.className = "ldGif";
+            hub.appendChild(ldScrn);
+            hub.appendChild(ldGif);
 
             setTimeout(() => {
-	           ldScrn.remove();
-	           ldGif.remove();
+                ldScrn.className = "ldScrn_full";
+                ldGif.className = "ldGif_full";
+
+                UI.loadUserData(ldScrn, ldGif);
+            }, 50);
+        },
+        killLoadScreen: (ldScrn, ldGif) => {//kills the loading elements
+
+            ldScrn.className = "ldScrn";
+            ldGif.className = "ldGif";
+
+            setTimeout(() => {
+                ldScrn.remove();
+                ldGif.remove();
             }, 500);
-	    },
+        },
         loadUserData: (ldScrn, ldGif) => {//here is where the game checks the user data
             var uData = localStorage.getItem("userData");
             
             if (uData) {
                 var uuu = JSON.parse(uData);
             }
+            UI.doMenu(uData, uuu);
+            //console.log(uuu.level);
+            setTimeout(() => { UI.killLoadScreen(ldScrn, ldGif); }, 2000);
             
-            console.log(uuu.level);
-            //setTimeout(() => { UI.killLoadScreen(ldScrn, ldGif); }, 2000);
-            
-	    }
+        },
+        doMenu: (uData, uuu) => {
+            var myMenu = UI.createEle("div"), elems;
+
+            elems = "Level:" + uuu.level + "";
+            elems += "Candy: " + uuu.candy + "";
+
+            myMenu.className = "myMenu";
+            myMenu.innerHTML = elems;
+
+            hub.appendChild(myMenu);
+
+            //console.log(uuu.level);
+        }
 	};
 	app.start();
 
