@@ -80,3 +80,15 @@
     background-repeat:no-repeat;
     z-index:100;
 }
+#delBTN {
+    position:fixed;
+}
+.myMenu {
+
+}
+    .myMenu span {
+        width:50%;
+        display:inline-block;
+        text-align:center;
+        padding:5px 0;
+    }

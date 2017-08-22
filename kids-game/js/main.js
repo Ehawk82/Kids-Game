@@ -44,7 +44,7 @@
             document.addEventListener("visibilitychange", onVisibilityChanged);
             args.setPromise(WinJS.UI.processAll());
             ApplicationView.preferredLaunchWindowingMode = ApplicationViewWindowingMode.fullScreen;
-            UI.startup();//starts general program here
+            
         }
 
         isFirstActivation = false;
@@ -67,7 +67,7 @@
         level: 0,
         candy: 0,
         color: "",
-        special: "",
+        special: "🚫",
         trophy: ""
     };
 
@@ -87,15 +87,24 @@
         },
         createEle: (x) => { return document.createElement(x); },
         startup: () => {// loading initialization data here
-            var startBTN = UI.createEle("button");
-            //console.log("startup");
+            var startBTN = UI.createEle("button"),
+                delBTN = UI.createEle("button");
+
             startBTN.innerHTML = "Start";
             startBTN.id = "startBTN";
             startBTN.onclick = UI.beginningGame(startBTN);
 
+            delBTN.innerHTML = "Delete Storage";
+            delBTN.id = "delBTN";
+            delBTN.onclick = UI.delStorage;
+
             hub.appendChild(startBTN);
+            hub.appendChild(delBTN);
+
             UI.initialize();
-            setTimeout(() => { startBTN.id = "startBTN_full" }, 500);
+            setTimeout(() => {
+                startBTN.id = "startBTN_full";
+            }, 500);
         },
         beginningGame: (startBTN) => {//putting away the start button and then removing it, then triggering the loading screen.
             return () => {
@@ -145,15 +154,20 @@
                 var uuu = JSON.parse(uData);
             }
             UI.doMenu(uData, uuu);
+            UI.doSpecial(uData, uuu);
             //console.log(uuu.level);
             setTimeout(() => { UI.killLoadScreen(ldScrn, ldGif); }, 2000);
             
         },
+        doSpecial: (uData, uuu) => {
+            console.log(uuu.special);
+        },
         doMenu: (uData, uuu) => {
             var myMenu = UI.createEle("div"), elems;
 
-            elems = "Level:" + uuu.level + "";
-            elems += "Candy: " + uuu.candy + "";
+            elems = "<span>⭐" + uuu.level + "</span>";
+            elems += "<span>🍬" + uuu.candy + "</span>";
+            elems += "<hr />";
 
             myMenu.className = "myMenu";
             myMenu.innerHTML = elems;
@@ -161,8 +175,17 @@
             hub.appendChild(myMenu);
 
             //console.log(uuu.level);
+        },
+        ///admin settings and tools
+        delStorage: () => {
+            localStorage.clear();
+            window.location.reload();
         }
-	};
+    };
+    window.onload = () => {
+        UI.startup();//starts my general program here
+    };
+
 	app.start();
 
 })();
