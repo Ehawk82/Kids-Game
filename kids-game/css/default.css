@@ -83,6 +83,12 @@
 #delBTN {
     position:fixed;
 }
+
+.specialClass {
+    position:fixed;
+    bottom:0;
+}
+
 .myMenu {
 
 }

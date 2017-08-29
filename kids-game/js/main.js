@@ -160,7 +160,12 @@
             
         },
         doSpecial: (uData, uuu) => {
-            console.log(uuu.special);
+            var mySpecial = UI.createEle("div");
+
+            mySpecial.innerHTML = "Special: " + uuu.special + "";
+            mySpecial.className = "specialClass";
+
+            hub.appendChild(mySpecial);
         },
         doMenu: (uData, uuu) => {
             var myMenu = UI.createEle("div"), elems;
@@ -178,7 +183,6 @@
         },
         ///admin settings and tools
         delStorage: () => {
-            localStorage.clear();
             window.location.reload();
         }
     };
