@@ -105,3 +105,28 @@
         text-align:center;
         padding:5px 0;
     }
+.unicorn {
+    background-image: url('../images/assets/horse.png');
+    background-size: 235px 200px ;
+    width:235px;
+    height:200px;
+    position:absolute;
+    bottom:100%;
+}
+.unicorn_full {
+    transition:1s all;
+    background-image: url('../images/assets/horse.png');
+    background-size: 235px 200px ;
+    width:235px;
+    height:200px;
+    position:absolute;
+    bottom:10%;
+}
+.road {
+    position:absolute;
+    background:yellow;
+    width:150%;
+    height:10%;
+    overflow:hidden;
+    bottom:5%;
+}

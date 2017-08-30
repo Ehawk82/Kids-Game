@@ -163,9 +163,30 @@
             setTimeout(() => {
                 UI.doMenu(uData, uuu);
                 UI.doSpecial(uData, uuu);
+                UI.loadMatter(uData, uuu);
+                UI.loadAvatar(uData, uuu);
+
                 //console.log(uuu.level);
                 setTimeout(() => { UI.killLoadScreen(ldScrn, ldGif); }, 2000);
             }, 1000);
+        },
+        loadMatter: () => {
+            var road = UI.createEle("div");
+
+            road.className = "road";
+            road.innerHTML = "&nbsp;";
+
+            hub.appendChild(road);
+        },
+        loadAvatar: () => {
+            var unicorn = UI.createEle("div");
+
+            unicorn.className = "unicorn";
+            unicorn.innerHTML = "&nbsp;";
+
+            hub.appendChild(unicorn);
+
+            setTimeout(() => { unicorn.className = "unicorn_full"; }, 1600);
         },
         doSpecial: (uData, uuu) => {
             var mySpecial = UI.createEle("div");

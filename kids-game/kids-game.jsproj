@@ -58,6 +58,7 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="images\assets\horse.png" />
     <Content Include="images\page-loader.gif" />
     <Content Include="index.html" />
     <Content Include="images\LockScreenLogo.scale-200.png" />
