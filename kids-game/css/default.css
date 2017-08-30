@@ -44,6 +44,7 @@
     text-align:center;
     line-height:100vh;
     width:100%;
+    z-index:100;
 }
 .ldScrn_full {
     transition:all 500ms;
@@ -55,6 +56,8 @@
     text-align:center;
     line-height:100vh;
     width:100%;
+    z-index:100;
+
 }
 .ldGif {
     transition:all 500ms;
@@ -80,20 +83,24 @@
     background-repeat:no-repeat;
     z-index:100;
 }
-#delBTN {
-    position:fixed;
+#delBTN, #capBTN {
+    float:left;
 }
 
 .specialClass {
     position:fixed;
     bottom:0;
+    z-index:98;
 }
 
 .myMenu {
+    clear:both;
 
+    width:100%;
 }
     .myMenu span {
-        width:50%;
+
+        width:10%;
         display:inline-block;
         text-align:center;
         padding:5px 0;

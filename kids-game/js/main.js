@@ -88,7 +88,8 @@
         createEle: (x) => { return document.createElement(x); },
         startup: () => {// loading initialization data here
             var startBTN = UI.createEle("button"),
-                delBTN = UI.createEle("button");
+                delBTN = UI.createEle("button"),
+                capBTN = UI.createEle("button");
 
             startBTN.innerHTML = "Start";
             startBTN.id = "startBTN";
@@ -98,10 +99,16 @@
             delBTN.id = "delBTN";
             delBTN.onclick = UI.delStorage;
 
+            capBTN.innerHTML = "Capture Body Tag";
+            capBTN.id = "capBTN";
+            capBTN.onclick = UI.captureBody;
+
             hub.appendChild(startBTN);
             hub.appendChild(delBTN);
+            hub.appendChild(capBTN);
 
             UI.initialize();
+
             setTimeout(() => {
                 startBTN.id = "startBTN_full";
             }, 500);
@@ -153,11 +160,12 @@
             if (uData) {
                 var uuu = JSON.parse(uData);
             }
-            UI.doMenu(uData, uuu);
-            UI.doSpecial(uData, uuu);
-            //console.log(uuu.level);
-            setTimeout(() => { UI.killLoadScreen(ldScrn, ldGif); }, 2000);
-            
+            setTimeout(() => {
+                UI.doMenu(uData, uuu);
+                UI.doSpecial(uData, uuu);
+                //console.log(uuu.level);
+                setTimeout(() => { UI.killLoadScreen(ldScrn, ldGif); }, 2000);
+            }, 1000);
         },
         doSpecial: (uData, uuu) => {
             var mySpecial = UI.createEle("div");
@@ -172,7 +180,6 @@
 
             elems = "<span>⭐" + uuu.level + "</span>";
             elems += "<span>🍬" + uuu.candy + "</span>";
-            elems += "<hr />";
 
             myMenu.className = "myMenu";
             myMenu.innerHTML = elems;
@@ -181,9 +188,12 @@
 
             //console.log(uuu.level);
         },
-        ///admin settings and tools
+        ///admin, settings, and tools...
         delStorage: () => {
             window.location.reload();
+        },
+        captureBody: () => {
+            console.log(hub);
         }
     };
     window.onload = () => {
