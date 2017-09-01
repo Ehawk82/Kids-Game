@@ -106,7 +106,7 @@
         padding:5px 0;
     }
 .unicorn {
-    background-image: url('../images/assets/horse.png');
+    background-image: url('../images/assets/horse0.png');
     background-size: 235px 200px ;
     width:235px;
     height:200px;
@@ -115,18 +115,122 @@
 }
 .unicorn_full {
     transition:1s all;
-    background-image: url('../images/assets/horse.png');
-    background-size: 235px 200px ;
-    width:235px;
-    height:200px;
+    background-image: url('../images/assets/horse0.png');
+    background-repeat:no-repeat;
+    background-size: 259px 196px ;
+    width:259px;
+    height:196px;
     position:absolute;
     bottom:10%;
 }
-.road {
+.unicorn_0 {
+
+    background-image: url('../images/assets/horse0.png');
+    background-size: 259px 196px ;
+    background-repeat:no-repeat;
+    width:259px;
+    height:196px;
     position:absolute;
-    background:yellow;
-    width:150%;
-    height:10%;
-    overflow:hidden;
-    bottom:5%;
+    bottom:10%;
+}
+.unicorn_1 {
+
+    background-image: url('../images/assets/horse1.png');
+    background-repeat:no-repeat;
+    background-size: 259px 196px ;
+    width:259px;
+    height:196px;
+    position:absolute;
+    bottom:10%;
+}
+.unicorn_2 {
+
+    background-image: url('../images/assets/horse2.png');
+    background-repeat:no-repeat;
+    background-size: 259px 196px ;
+    width:259px;
+    height:196px;
+    position:absolute;
+    bottom:10%;
+}
+.unicorn_3 {
+
+    background-image: url('../images/assets/horse3.png');
+    background-repeat:no-repeat;
+    background-size: 259px 196px ;
+    width:259px;
+    height:196px;
+    position:absolute;
+    bottom:10%;
+}
+.unicorn_4 {
+
+    background-image: url('../images/assets/horse4.png');
+    background-repeat:no-repeat;
+    background-size: 259px 196px ;
+    width:259px;
+    height:196px;
+    position:absolute;
+    bottom:10%;
+}
+.unicorn_5 {
+
+    background-image: url('../images/assets/horse5.png');
+    background-repeat:no-repeat;
+    background-size: 259px 196px ;
+    width:259px;
+    height:196px;
+    position:absolute;
+    bottom:10%;
+}
+.unicorn_6 {
+
+    background-image: url('../images/assets/horse6.png');
+    background-repeat:no-repeat;
+    background-size: 259px 196px ;
+    width:259px;
+    height:196px;
+    position:absolute;
+    bottom:10%;
+}
+.unicorn_7 {
+
+    background-image: url('../images/assets/horse7.png');
+    background-repeat:no-repeat;
+    background-size: 259px 196px ;
+    width:259px;
+    height:196px;
+    position:absolute;
+    bottom:10%;
+}
+.unicorn_8 {
+
+    background-image: url('../images/assets/horse8.png');
+    background-repeat:no-repeat;
+    background-size: 259px 196px ;
+    width:259px;
+    height:196px;
+    position:absolute;
+    bottom:10%;
+}
+.unicorn_9 {
+
+    background-image: url('../images/assets/horse9.png');
+    background-repeat:no-repeat;
+    background-size: 259px 196px ;
+    width:259px;
+    height:196px;
+    position:absolute;
+    bottom:10%;
+}
+
+.road {
+    background-image: url('../images/assets/road.jpg');
+    background-size:auto 100%;
+    position: absolute;
+
+    width: 150%;
+    height: 10%;
+    overflow: hidden;
+    bottom: 5%;
 }

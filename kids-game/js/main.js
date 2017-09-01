@@ -61,7 +61,9 @@
         // You might use the WinJS.Application.sessionState object, which is automatically saved and restored across suspension.
         // If you need to complete an asynchronous operation before your application is suspended, call args.setPromise().
     };
-    var UI, userData;
+    var UI, userData, steps;
+
+    steps = 0;
 
     userData = {
         level: 0,
@@ -76,6 +78,10 @@
             var uData = localStorage.getItem("userData");
             if (!uData || uData === null) {
                 localStorage.setItem("userData", JSON.stringify(userData));//creating new user's info
+            }
+            var steps = localStorage.getItem("steps");
+            if (!steps || steps === null) {
+                localStorage.setItem("steps", 0);//creating new user's info
             }
             /*
             var xx = localStorage.getItem("userData");
@@ -186,7 +192,45 @@
 
             hub.appendChild(unicorn);
 
-            setTimeout(() => { unicorn.className = "unicorn_full"; }, 1600);
+            setTimeout(() => {
+                unicorn.className = "unicorn_full";
+
+                var notTooFast = false;
+                var timeout = 80; // change it whatever you want to be
+
+                document.onkeydown = function (e) {
+                    e = e || window.event;
+                    if (e.keyCode == '39') {
+
+                        if (!notTooFast) {
+                            var steps = localStorage.getItem("steps");
+                            if (+steps < 9) {
+                                if (+steps === +steps) {
+                                    localStorage.setItem("steps", +steps + +1)
+                                }
+                            } else {
+                                localStorage.setItem("steps", +steps - +10);
+                            }
+                            var sss = localStorage.getItem("steps");
+
+                            unicorn.className = "unicorn_" + sss + "";
+
+                            notTooFast = true;
+                            setTimeout(function () {
+                                notTooFast = false;
+                            }, timeout);
+
+                            return false;
+                        }
+                    }
+                }
+                document.onkeyup = function (e) {
+                    e = e || window.event;
+                    if (e.keyCode == '39') {
+                        return unicorn.className = "unicorn_full";
+                    }
+                }
+            }, 1600);
         },
         doSpecial: (uData, uuu) => {
             var mySpecial = UI.createEle("div");
@@ -217,6 +261,7 @@
             console.log(hub);
         }
     };
+    //global functions
     window.onload = () => {
         UI.startup();//starts my general program here
     };

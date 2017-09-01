@@ -58,7 +58,18 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="images\assets\horse.png" />
+    <Content Include="images\assets\horse9.png" />
+    <Content Include="images\assets\horse8.png" />
+    <Content Include="images\assets\horse7.png" />
+    <Content Include="images\assets\horse6.png" />
+    <Content Include="images\assets\horse5.png" />
+    <Content Include="images\assets\horse4.png" />
+    <Content Include="images\assets\horse3.png" />
+    <Content Include="images\assets\horse2.png" />
+    <Content Include="images\assets\horse1.png" />
+    <Content Include="images\assets\horseMove.gif" />
+    <Content Include="images\assets\horse0.png" />
+    <Content Include="images\assets\road.jpg" />
     <Content Include="images\page-loader.gif" />
     <Content Include="index.html" />
     <Content Include="images\LockScreenLogo.scale-200.png" />
